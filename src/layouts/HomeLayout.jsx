@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from '../components/Header';
 import LatestNews from '../components/LatestNews';
+import Navbar from '../components/Navbar';
+import LeftNavbar from '../components/layout-components/LeftNavbar';
 
 const HomeLayout = () => {
     return (
@@ -11,8 +13,23 @@ const HomeLayout = () => {
                     <LatestNews></LatestNews>
                 </section>
             </header>
-            <navbar></navbar>
-            <main></main>
+
+
+            {/* Navbar */}
+            <div>
+                <div className='w-11/12 mx-auto'>
+                    <Navbar></Navbar>
+                </div>
+            </div>
+
+            <main className='w-11/12 mx-auto grid grid-cols-12 gap-3 pt-10'>
+
+                <aside className='col-span-3'><LeftNavbar></LeftNavbar></aside>
+
+                <section className='col-span-6'>Main</section>
+
+                <aside className='col-span-3'>Right</aside>
+            </main>
         </div>
     );
 };
