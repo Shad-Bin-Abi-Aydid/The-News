@@ -18,7 +18,11 @@ const LeftNavbar = () => {
       <h2 className="font-semibold">All Category</h2>
       <div className="flex flex-col gap-3 pt-5">
         {category.map((category) => (
-          <NavLink to={`/category/${category.category_id}`} className="btn btn-primary" key={category.category_id}>
+          <NavLink
+            to={`/category/${category.category_id}`}
+            className={({ isActive }) => isActive ? "btn btn-accent " : "btn btn-primary"}
+            key={category.category_id}
+          >
             {category.category_name}
           </NavLink>
         ))}
