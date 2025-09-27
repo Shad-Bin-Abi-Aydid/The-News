@@ -1,15 +1,20 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import NewsCard from '../components/layout-components/NewsCard';
 
 const CategoryNews = () => {
-    const {data} = useLoaderData();
+    const {data:news} = useLoaderData();
 
-    console.log(data);
+    
     return (
         <div>
-            <h1>Category {data.length}</h1>
-            <h1>{data[0].details}</h1>
-            <img src={data[0].image_url} alt="" />
+            <h2 className='font-semibold mb-3'>Dragon News Home</h2>
+            
+            <div>
+                {
+                    news.map(singleNews => <NewsCard key={singleNews._id} data = {singleNews}></NewsCard>)
+                }
+            </div>
             
         </div>
     );

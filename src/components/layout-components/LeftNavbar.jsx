@@ -9,13 +9,10 @@ const LeftNavbar = () => {
       .then((res) => res.json())
       .then((data) => setCategory(data.data.news_category));
   }, []);
-  //    {
-  //         "category_id": "04",
-  //         "category_name": "Sports"
-  //       },
+  
   return (
     <div>
-      <h2 className="font-semibold">All Category</h2>
+      <h2 className="font-semibold">All News</h2>
       <div className="flex flex-col gap-3 pt-5">
         {category.map((category) => (
           <NavLink

@@ -6,10 +6,10 @@ const SocialLogin = () => {
       <h2 className="font-semibold">Login With</h2>
       <div className="flex flex-col space-y-3">
         <button className="btn btn-info">
-          <FaGoogle></FaGoogle> Login with Google
+          <FaGoogle></FaGoogle> Google
         </button>
         <button className="btn btn-info">
-          <FaGithub></FaGithub> Login with Github
+          <FaGithub></FaGithub> Github
         </button>
       </div>
     </div>
