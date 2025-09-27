@@ -22,7 +22,7 @@ const News = () => {
         <FaArrowLeft /> Back
       </button>
 
-      <div className="flex flex-col md:flex-row justify-center md:justify-around items-center md:items-start gap-5">
+      <div className="w-11/12 mx-auto flex flex-col md:flex-row justify-center md:justify-around items-center md:items-start gap-5">
         <div className="border border-gray-300 p-5 rounded-lg">
           {/* Image */}
           <img
@@ -39,9 +39,8 @@ const News = () => {
         </div>
 
         <div>
-            <RightNavbar></RightNavbar>
+          <RightNavbar></RightNavbar>
         </div>
-        
       </div>
     </div>
   );

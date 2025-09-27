@@ -16,7 +16,7 @@ const Navbar = () => {
                 <div>
                     <img src={userIcon} alt="" />
                 </div>
-                <button className='btn btn-neutral'>Login</button>
+                <Link to='/auth/login' className='btn btn-neutral'>Login</Link>
 
             </div>
         </div>
