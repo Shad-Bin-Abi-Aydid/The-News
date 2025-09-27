@@ -4,6 +4,8 @@ import HomeLayout from '../layouts/HomeLayout';
 import CategoryNews from '../pages/CategoryNews';
 import News from '../components/layout-components/News';
 import AuthLayout from '../layouts/AuthLayout';
+import Login from '../pages/Login';
+import Register from '../pages/Register';
 
 
 const routes = createBrowserRouter([
@@ -34,11 +36,11 @@ const routes = createBrowserRouter([
         children:[
             {
                 path:'/auth/login',
-                element:<h1>Login</h1>
+                element:<Login></Login>
             },
             {
                 path:'/auth/register',
-                element:<h1>Register</h1>
+                element:<Register></Register>
             }
         ]
     },
