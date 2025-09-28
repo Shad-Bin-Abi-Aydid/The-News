@@ -1,14 +1,41 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Login = () => {
+
+  const navigate = useNavigate();
+
+  const {userLogin, setUser} = useContext(AuthContext);
+
+  const handleLogin = (e) =>{
+    e.preventDefault();
+
+    // get form data
+    const form = new FormData(e.target);
+
+    const email =  form.get('email');
+    const password =  form.get('password');
+
+    userLogin(email,password)
+    .then((result) =>{
+      const user = result.user;
+      setUser(user);
+      navigate('/');
+
+    })
+    .catch((error) => {
+    alert(error.code)
+  });
+  }
+
   return (
     <div className="min-h-screen flex justify-center items-start mt-20">
       <div className="card w-full max-w-sm shrink-0 shadow-2xl">
         <h2 className="text-center font-bold text-xl mt-3">
           Login your account
         </h2>
-        <form className="card-body">
+        <form onSubmit={handleLogin} className="card-body">
           <fieldset className="fieldset">
             <label className="label">Email</label>
             <input

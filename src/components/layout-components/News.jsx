@@ -5,10 +5,10 @@ import Header from "../Header";
 import RightNavbar from "./RightNavbar";
 
 const News = () => {
-  const news = useLoaderData(); // ✅ fetched single news data
+  const news = useLoaderData(); 
   const navigate = useNavigate();
 
-  const { title, author, image_url, details } = news.data[0]; // API returns { data: [news] }
+  const { title, author, image_url, details } = news.data[0];
 
   return (
     <div className="px-5">
@@ -22,8 +22,8 @@ const News = () => {
         <FaArrowLeft /> Back
       </button>
 
-      <div className="w-11/12 mx-auto flex flex-col md:flex-row justify-center md:justify-around items-center md:items-start gap-5">
-        <div className="border border-gray-300 p-5 rounded-lg">
+      <div className="w-11/12 mx-auto grid md:grid-cols-12 gap-10">
+        <div className="border border-gray-300 col-span-9 p-5 rounded-lg">
           {/* Image */}
           <img
             src={image_url}
@@ -38,7 +38,7 @@ const News = () => {
           <p className="text-gray-700 leading-relaxed max-w-4xl ">{details}</p>
         </div>
 
-        <div>
+        <div className="col-span-3">
           <RightNavbar></RightNavbar>
         </div>
       </div>
