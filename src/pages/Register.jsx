@@ -1,38 +1,41 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Register = () => {
+  const { createUserEP, setUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const {createUserEP, setUser} = useContext(AuthContext);
-
-  const handleSubmit = (e) =>{
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     // get from data
     const form = new FormData(e.target);
 
-    const name = form.get('name')
-    const photo = form.get('photo')
-    const email = form.get('email')
-    const password = form.get('password')
-    
+    const name = form.get("name");
+    const photo = form.get("photo");
+    const email = form.get("email");
+    const password = form.get("password");
 
     // Create new User with email and password
     createUserEP(email, password)
-    .then((result) =>{
-      const user = result.user;
-      setUser(user);
-
-    })
-    .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorCode, errorMessage);
-  });
-    
-
-  }
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        updateUserProfile({ displayName: name, photoURL: photo })
+          .then(() => {
+            navigate("/");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+  };
 
   return (
     <div className="min-h-screen flex justify-center items-start mt-20">
@@ -79,7 +82,7 @@ const Register = () => {
           </fieldset>
         </form>
         <p className="text-center py-3">
-          Already have an account ? Please {" "}
+          Already have an account ? Please{" "}
           <Link to="/auth/login" className="underline text-blue-500">
             Login
           </Link>
